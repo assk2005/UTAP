@@ -1,0 +1,52 @@
+{% extends 'accounts/base_dashboard.html' %}
+
+{% block title %}Upload Resume{% endblock %}
+
+{% block page_header %}
+<div class="page-header">
+    <h2 class="page-title">Upload Resume</h2>
+    <p class="page-subtitle">
+        Submit your resume for <strong>{{ application.job.title }}</strong>
+    </p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="card shadow-sm mb-4">
+<div class="card-body">
+
+<h5 class="fw-semibold mb-3">Resume File</h5>
+
+<div class="mb-3">
+<label class="form-label">Upload Resume</label>
+<input type="file"
+       name="resume"
+       class="form-control"
+       accept=".pdf,.doc,.docx,.txt"
+       required>
+<small class="text-muted">
+Supported formats: PDF, DOC, DOCX, TXT
+</small>
+</div>
+
+</div>
+</div>
+
+<div class="card shadow-sm">
+<div class="card-body text-center">
+
+<button type="submit"
+        class="btn btn-dark btn-lg px-5">
+Upload & Evaluate
+</button>
+
+</div>
+</div>
+
+</form>
+
+{% endblock %}

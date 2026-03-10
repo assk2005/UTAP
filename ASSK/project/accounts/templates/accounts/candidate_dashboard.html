@@ -1,0 +1,158 @@
+{% extends 'accounts/base_dashboard.html' %}
+
+{% block title %}My Applications{% endblock %}
+
+{% block page_header %}
+<div class="page-header">
+    <h2 class="page-title">My Applications</h2>
+    <p class="page-subtitle">Track your job applications and resume evaluation results</p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= STATS SECTION ================= -->
+<div class="row g-3 mb-4">
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Available Jobs</p>
+                <h3 class="fw-bold mb-0">{{ total_available_jobs }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">My Applications</p>
+                <h3 class="fw-bold mb-0">{{ total_applications }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Shortlisted</p>
+                <h3 class="fw-bold text-info mb-0">{{ shortlisted_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Selected</p>
+                <h3 class="fw-bold text-success mb-0">{{ selected_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Rejected</p>
+                <h3 class="fw-bold text-danger mb-0">{{ rejected_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= APPLICATION TABLE ================= -->
+<div class="card shadow-sm">
+<div class="card-body p-0">
+
+<table class="table table-hover mb-0 align-middle">
+
+<thead class="table-light text-center">
+<tr>
+<th class="text-start">Job Title</th>
+<th>Company</th>
+<th>Status</th>
+<th>Score</th>
+<th>Resume</th>
+<th>Applied On</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+{% for app in applications %}
+<tr>
+
+<td class="fw-semibold text-start">
+{{ app.job.title }}
+</td>
+
+<td>
+{{ app.job.company_name }}
+</td>
+
+<td>
+{% if app.status == 'applied' %}
+<span class="badge bg-secondary">Under Review</span>
+{% elif app.status == 'shortlisted' %}
+<span class="badge bg-info">Shortlisted</span>
+{% elif app.status == 'selected' %}
+<span class="badge bg-success">Selected</span>
+{% elif app.status == 'rejected' %}
+<span class="badge bg-danger">Rejected</span>
+{% endif %}
+</td>
+
+<td>
+{% if app.score %}
+<strong>{{ app.score }}%</strong>
+{% else %}
+<span class="text-muted">Pending</span>
+{% endif %}
+</td>
+
+<td>
+{% if not app.resume %}
+<a href="{% url 'upload_resume' app.id %}"
+class="btn btn-sm btn-outline-dark">
+Upload Resume
+</a>
+{% else %}
+<span class="badge bg-success">Uploaded</span>
+{% endif %}
+</td>
+
+<td>
+
+<a href="{% url 'upload_resume' app.id %}"
+class="btn btn-sm btn-outline-dark">
+See Progress
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+<tr>
+<td colspan="6" class="text-center py-5">
+<div class="text-muted mb-3 fs-5">
+You haven’t applied to any jobs yet.
+</div>
+
+<a href="{% url 'candidate_job_list' %}"
+class="btn btn-dark">
+Browse Available Jobs
+</a>
+
+</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+{% endblock %}
