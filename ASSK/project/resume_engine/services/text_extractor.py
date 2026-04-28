@@ -23,22 +23,34 @@ def _extract_pdf(file_path):
     text=""
     try:
         doc=fitz.open(file_path)
+
         for page in doc:
-            text+=page.get_text()
+            text+=page.get_text("text")+"\n"
+
         doc.close()
-    except:
-        text=""
+
+    except Exception as e:
+        print("PDF extraction error:",e)
+
     return text
 
 
 def _extract_docx(file_path):
     text=""
+
     try:
         doc=docx.Document(file_path)
+
         for para in doc.paragraphs:
             text+=para.text+"\n"
-    except:
-        text=""
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    text+=cell.text+" "
+
+    except Exception as e:
+        print("DOCX extraction error:",e)
+
     return text
 
 
@@ -46,5 +58,7 @@ def _extract_txt(file_path):
     try:
         with open(file_path,'r',encoding='utf-8',errors='ignore') as f:
             return f.read()
-    except:
+
+    except Exception as e:
+        print("TXT extraction error:",e)
         return ""

@@ -12,7 +12,7 @@ def evaluate_application(application):
 
     raw_text=extract_text(resume_path)
 
-    if not raw_text or not is_english(raw_text):
+    if not raw_text or len(raw_text)<50 or not is_english(raw_text):
         return {
             "skill_score":0,
             "experience_score":0,
@@ -33,17 +33,21 @@ def evaluate_application(application):
     skills_list=[
         skill.strip()
         for skill in application.job.skills_required.split(',')
+        if skill.strip()
     ]
 
     config=EngineConfig.objects.first()
+
+    if not config:
+        raise ValueError("EngineConfig not configured")
 
     skill_score=evaluate_skills(cleaned,skills_list,config)
 
     final_score=compute_final_score(skill_score,exp_score,config)
 
-    print("Skill Score:", skill_score)
-    print("Experience Score:", exp_score)
-    print("Final Score:", final_score)
+    print("Skill Score:",skill_score)
+    print("Experience Score:",exp_score)
+    print("Final Score:",final_score)
 
     return {
         "skill_score":skill_score,

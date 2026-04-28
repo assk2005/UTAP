@@ -414,6 +414,7 @@ def upload_resume(request, application_id):
     if request.method == 'POST':
 
         from resume_engine.services.processor import evaluate_application
+        from resume_engine.models import EngineConfig
 
         application.resume = request.FILES['resume']
         application.save()
@@ -422,9 +423,13 @@ def upload_resume(request, application_id):
 
         application.score = round(result["final_score"] * 100)
 
-        cutoff = application.job.cutoff_score or 35
+        skill_percent = round(result["skill_score"] * 100)
 
-        if application.score >= cutoff:
+        config = EngineConfig.objects.first()
+
+        cutoff = application.job.cutoff_score or int((config.min_final_score if config else 0.55) * 100)
+
+        if application.score >= cutoff and skill_percent >= 40:
             application.status = 'shortlisted'
         else:
             application.status = 'rejected'

@@ -6,7 +6,7 @@ class EngineConfig(models.Model):
     skill_weight=models.FloatField(default=0.7)
     experience_weight=models.FloatField(default=0.3)
 
-    min_final_score=models.FloatField(default=0.35)
+    min_final_score=models.FloatField(default=0.55)
 
     semantic_weight=models.FloatField(default=0.5)
     frequency_weight=models.FloatField(default=0.2)

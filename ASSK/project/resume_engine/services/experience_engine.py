@@ -3,54 +3,63 @@ from datetime import datetime
 
 
 def extract_experience(text):
-    text = text.lower()
-    current_year = datetime.now().year
+    text=text.lower()
+    current_year=datetime.now().year
+    current_month=datetime.now().month
 
-    onsite_years = 0
-    remote_years = 0
+    onsite_years=0
+    remote_years=0
 
-    # 1️⃣ Flexible year range detection (handles messy formatting)
-    year_ranges = re.findall(
-        r'(20\d{2}).{0,15}?(20\d{2}|present)',
-        text,
-        flags=re.IGNORECASE
+    date_ranges=re.findall(
+        r'(\d{2})/(\d{4}).{0,15}?(\d{2}/\d{4}|present)',
+        text
     )
 
-    for start, end in year_ranges:
-        start = int(start)
+    for start_m,start_y,end in date_ranges:
 
-        if end.lower() == 'present':
-            end = current_year
+        start_m=int(start_m)
+        start_y=int(start_y)
+
+        if end=='present':
+            end_m=current_month
+            end_y=current_year
         else:
-            end = int(end)
+            end_m=int(end.split('/')[0])
+            end_y=int(end.split('/')[1])
 
-        duration = max(end - start, 0)
+        months=(end_y-start_y)*12+(end_m-start_m)
+        years=months/12
 
-        # detect remote context nearby
-        pattern = f"{start}.*?{end}"
-        match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+        snippet_pattern=f"{start_m}/{start_y}.*?{end}"
+        snippet=re.search(snippet_pattern,text,re.DOTALL)
 
-        if match and 'remote' in match.group():
-            remote_years += duration
+        if snippet and 'remote' in snippet.group():
+            remote_years+=years
         else:
-            onsite_years += duration
+            onsite_years+=years
 
-    # 2️⃣ Detect explicit phrases like "2+ years", "3 years experience"
-    phrase_match = re.search(r'(\d+)\+?\s+years', text)
+
+    phrase_match=re.search(
+        r'(\d+)\+?\s*(years|yrs)',
+        text
+    )
+
     if phrase_match:
-        phrase_years = int(phrase_match.group(1))
-        onsite_years = max(onsite_years, phrase_years)
-
-    return onsite_years, remote_years
+        phrase_years=int(phrase_match.group(1))
+        onsite_years=max(onsite_years,phrase_years)
 
 
-def compute_experience_score(onsite_years, remote_years, min_experience):
-    adjusted = onsite_years + (0.8 * remote_years)
+    return round(onsite_years,2),round(remote_years,2)
 
-    if min_experience == 0:
-        return adjusted, 1.0
 
-    if adjusted >= min_experience:
-        return adjusted, 1.0
 
-    return adjusted, adjusted / min_experience
+def compute_experience_score(onsite_years,remote_years,min_experience):
+
+    adjusted=onsite_years+(0.8*remote_years)
+
+    if min_experience==0:
+        return adjusted,1.0
+
+    score=min(adjusted/min_experience,1)
+
+    return adjusted,round(score,3)
