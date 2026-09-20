@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Which layer of OSI model handles routing?",
+    "options": ["Data Link Layer", "Transport Layer", "Network Layer", "Application Layer"],
+    "correct": 3
+  },
+  {
+    "question": "Which protocol is connection-oriented?",
+    "options": ["UDP", "TCP", "ICMP", "ARP"],
+    "correct": 2
+  },
+  {
+    "question": "What does DNS translate?",
+    "options": ["IP to MAC", "Domain name to IP", "IP to domain", "URL to protocol"],
+    "correct": 2
+  },
+  {
+    "question": "Which device operates at Layer 2?",
+    "options": ["Router", "Switch", "Gateway", "Firewall"],
+    "correct": 2
+  },
+  {
+    "question": "What is the default port of HTTPS?",
+    "options": ["80", "21", "443", "25"],
+    "correct": 3
+  },
+  {
+    "question": "Which protocol is used to send emails?",
+    "options": ["FTP", "SMTP", "SNMP", "HTTP"],
+    "correct": 2
+  },
+  {
+    "question": "Which topology has a single central node?",
+    "options": ["Ring", "Bus", "Star", "Mesh"],
+    "correct": 3
+  },
+  {
+    "question": "Which protocol resolves IP to MAC address?",
+    "options": ["DNS", "DHCP", "ARP", "ICMP"],
+    "correct": 3
+  },
+  {
+    "question": "Which layer ensures reliable data transfer?",
+    "options": ["Transport Layer", "Physical Layer", "Session Layer", "Presentation Layer"],
+    "correct": 1
+  },
+  {
+    "question": "Which technique divides bandwidth into multiple channels?",
+    "options": ["Multiplexing", "Switching", "Routing", "Encapsulation"],
+    "correct": 1
+  }
+]

@@ -1,0 +1,9 @@
+<h2>Output Test Result</h2>
+
+<p>Score: {{ score }} / {{ total }}</p>
+
+{% if score >= total|floatformat:0 %}
+<p>You passed the output test.</p>
+{% else %}
+<p>You did not pass.</p>
+{% endif %}

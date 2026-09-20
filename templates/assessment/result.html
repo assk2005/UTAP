@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UTAP Assessment Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+        }
+
+        .navbar {
+            padding: 15px 40px;
+            background: #111827;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .score-box {
+            margin-top: 30px;
+            padding: 25px;
+            background: #eef2ff;
+            border-radius: 10px;
+        }
+
+        .btn-section {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    UTAP Assessment Result
+</div>
+
+<div class="container">
+
+    <h2>Assessment Completed</h2>
+
+    {% if qualified %}
+        <div class="badge pass">PASSED</div>
+    {% else %}
+        <div class="badge fail">FAILED</div>
+    {% endif %}
+
+    <div class="score-box">
+        <p><strong>Total Questions:</strong> {{ 30 }}</p>
+        <p><strong>Correct Answers:</strong> {{ result.score }}</p>
+        <p><strong>Percentage:</strong> {{ result.percentage }}%</p>
+    </div>
+
+    <div class="btn-section">
+        {% if qualified %}
+            <a href="https://your-ai-interview-link.com" class="btn">
+                Proceed to AI Interview
+            </a>
+        {% else %}
+            <a href="/" class="btn">
+                Return to Home
+            </a>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>

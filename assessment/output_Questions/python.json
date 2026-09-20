@@ -1,0 +1,202 @@
+[
+{
+"question":"What error occurs in the following code?\n\nx = [1,2,3]\nprint(x[3])",
+"options":["IndexError","KeyError","ValueError","No Error"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = 5\ny = '2'\nprint(x + y)",
+"options":["ValueError","TypeError","SyntaxError","No Error"],
+"answer":2
+},
+{
+"question":"What error occurs?\n\nprint(a)\na = 10",
+"options":["NameError","ValueError","SyntaxError","TypeError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nfor i in range(5)\n    print(i)",
+"options":["SyntaxError","IndentationError","TypeError","ValueError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = {'a':1,'b':2}\nprint(x['c'])",
+"options":["IndexError","TypeError","KeyError","ValueError"],
+"answer":3
+},
+{
+"question":"What error occurs?\n\nprint(10/0)",
+"options":["ValueError","ArithmeticError","ZeroDivisionError","RuntimeError"],
+"answer":3
+},
+{
+"question":"What error occurs?\n\nx = (1,2,3)\nx[0] = 10",
+"options":["TypeError","ValueError","IndexError","SyntaxError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nimport math\nprint(math.square(4))",
+"options":["AttributeError","ImportError","TypeError","ValueError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = [1,2,3]\nx.append([4,5]\n",
+"options":["SyntaxError","TypeError","IndexError","ValueError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nprint(len(10))",
+"options":["TypeError","ValueError","SyntaxError","IndexError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = {1,2,3}\nprint(x[1])",
+"options":["IndexError","TypeError","KeyError","ValueError"],
+"answer":2
+},
+{
+"question":"What error occurs?\n\nimport random\nrandom.sample([1,2,3],5)",
+"options":["IndexError","TypeError","ValueError","SyntaxError"],
+"answer":3
+},
+{
+"question":"What error occurs?\n\nx = [1,2,3]\nprint(x + 'hello')",
+"options":["TypeError","ValueError","SyntaxError","RuntimeError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\ndef func(a,b):\n    return a+b\n\nfunc(1)",
+"options":["ValueError","TypeError","NameError","SyntaxError"],
+"answer":2
+},
+{
+"question":"What error occurs?\n\nx = 10\nx()",
+"options":["TypeError","ValueError","SyntaxError","IndexError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = [1,2,3]\nprint(x.pop(5))",
+"options":["IndexError","KeyError","ValueError","TypeError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nprint(int('abc'))",
+"options":["TypeError","ValueError","SyntaxError","RuntimeError"],
+"answer":2
+},
+{
+"question":"What error occurs?\n\nfrom math import sqrt\nprint(sqrt(-1))",
+"options":["ValueError","RuntimeError","TypeError","SyntaxError"],
+"answer":1
+},
+{
+"question":"What error occurs?\n\nx = {'a':1}\nx.update(5)",
+"options":["ValueError","TypeError","SyntaxError","KeyError"],
+"answer":2
+},
+{
+"question":"What error occurs?\n\nfor i in 5:\n    print(i)",
+"options":["ValueError","TypeError","RuntimeError","SyntaxError"],
+"answer":2
+},
+{
+"question": "Find the error in the following code:\n\nnums = [1,2,3,4,5]\n\ndef calculate():\n    total = 0\n    for i in range(len(nums)):\n        if nums[i] % 2 == 0:\n            total += nums[i]\n        else:\n            total += nums[i]\n    return total\n\nresult = calculate()\nprint(result)\n\nnums.append(6)\nprint(total)",
+"options": [
+"NameError because total is not defined outside the function",
+"SyntaxError in function definition",
+"IndexError in loop",
+"No Error"
+],
+"answer": 1
+},
+{
+"question": "Find the bug in the following program:\n\nclass Student:\n    def __init__(self,name,marks):\n        self.name = name\n        self.marks = marks\n\n    def average(self):\n        return sum(self.marks)/len(self.marks)\n\ns1 = Student('Ash', [70,80,90])\n\nprint(Student.average())\n\nprint(s1.name)\nprint(s1.average())",
+"options": [
+"TypeError because method is called without instance",
+"NameError for marks",
+"SyntaxError in class",
+"No Error"
+],
+"answer": 1
+},
+{
+"question": "What error occurs in this code?\n\nnumbers = [10,20,30,40]\n\ndef modify(lst):\n    for i in range(len(lst)):\n        lst[i] = lst[i] * 2\n\nmodify(numbers)\n\nfor i in range(5):\n    print(numbers[i])",
+"options": [
+"ValueError",
+"TypeError",
+"IndexError",
+"No Error"
+],
+"answer": 3
+},
+{
+"question": "Find the problem in the following code:\n\nitems = [1,2,3,4]\n\nfor i in items:\n    if i == 3:\n        items.remove(i)\n\nprint(items)\n\nfor i in range(len(items)):\n    print(items[i])",
+"options": [
+"Runtime logic error because modifying list while iterating",
+"SyntaxError",
+"IndexError",
+"No Error"
+],
+"answer": 1
+},
+{
+"question": "What issue exists in this code?\n\nvalues = [5,10,15]\n\nresult = []\n\nfor i in range(len(values)):\n    result.append(values[i] * 2)\n\nprint(result)\n\nprint(values[3])",
+"options": [
+"KeyError",
+"IndexError",
+"TypeError",
+"No Error"
+],
+"answer": 2
+},
+{
+"question": "Find the bug in this code:\n\ndef add_numbers(a,b):\n    return a+b\n\nnumbers = [1,2,3]\n\nfor n in numbers:\n    total = add_numbers(n)\n    print(total)",
+"options": [
+"ValueError",
+"TypeError because missing argument",
+"NameError",
+"No Error"
+],
+"answer": 2
+},
+{
+"question": "Find the error in the following code:\n\nfile = open('data.txt','r')\n\nlines = file.readlines()\n\nfor line in lines:\n    print(line.strip())\n\nfile.close()\n\nfile.write('New Data')",
+"options": [
+"ValueError",
+"IOError because file is closed",
+"RuntimeError",
+"No Error"
+],
+"answer": 2
+},
+{
+"question": "Find the bug:\n\nnumbers = [1,2,3]\n\nfor i in range(len(numbers)):\n    numbers.append(i)\n\nprint(numbers)",
+"options": [
+"Infinite loop / memory growth because list size increases",
+"SyntaxError",
+"IndexError",
+"No Error"
+],
+"answer": 1
+},
+{
+"question": "Identify the problem in the code:\n\nclass Car:\n\n    def __init__(self,brand):\n        self.brand = brand\n\n    def show():\n        print(self.brand)\n\nc = Car('BMW')\n\nc.show()",
+"options": [
+"TypeError because self parameter missing",
+"ValueError",
+"SyntaxError",
+"No Error"
+],
+"answer": 1
+},
+{
+"question": "Find the issue in the program:\n\nnums = [1,2,3]\n\nfor i in range(len(nums)):\n    nums[i] = nums[i] + 1\n\nprint(nums)\n\nprint(nums + 5)",
+"options": [
+"ValueError",
+"TypeError because list cannot be added to int",
+"IndexError",
+"No Error"
+],
+"answer": 2
+}
+]

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Final Result</title>
+
+<style>
+
+body{
+font-family:'Segoe UI';
+background:#f3f4f6;
+margin:0;
+}
+
+.container{
+max-width:800px;
+margin:60px auto;
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+.score-box{
+margin-top:20px;
+padding:20px;
+background:#f9fafb;
+border-radius:10px;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.pass{
+color:green;
+font-weight:bold;
+}
+
+.fail{
+color:red;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Assessment Completed</h2>
+
+{% if passed %}
+    <p>You have successfully cleared the assessment.</p>
+
+    <a href="/interview/start/">
+        <button class="btn btn-success">
+            Proceed to AI Interview
+        </button>
+    </a>
+
+{% else %}
+    <p>You did not clear the assessment.</p>
+
+    <a href="{% url 'candidate_dashboard' %}">
+        <button class="btn btn-secondary">
+            Return to Dashboard
+        </button>
+    </a>
+{% endif %}
+</div>
+
+</body>
+
+</html>

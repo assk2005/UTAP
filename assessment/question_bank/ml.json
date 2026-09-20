@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Which algorithm is used for classification?",
+    "options": ["K-Means", "Linear Regression", "Logistic Regression", "PCA"],
+    "correct": 3
+  },
+  {
+    "question": "Which metric evaluates classification models?",
+    "options": ["MSE", "Accuracy", "R2", "RMSE"],
+    "correct": 2
+  },
+  {
+    "question": "What is overfitting?",
+    "options": [
+      "Model performs well on training but poorly on test data",
+      "Model underperforms on all data",
+      "Model trains slowly",
+      "Model uses too few features"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which algorithm is unsupervised?",
+    "options": ["KNN", "K-Means", "SVM", "Decision Tree"],
+    "correct": 2
+  },
+  {
+    "question": "Which library is used for ML in Python?",
+    "options": ["NumPy", "Pandas", "Scikit-learn", "Matplotlib"],
+    "correct": 3
+  },
+  {
+    "question": "What is bias-variance tradeoff?",
+    "options": [
+      "Balance between model complexity and generalization",
+      "Data imbalance",
+      "Learning rate tuning",
+      "Feature scaling"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which technique reduces dimensionality?",
+    "options": ["PCA", "KNN", "SVM", "Naive Bayes"],
+    "correct": 1
+  },
+  {
+    "question": "What does cross-validation prevent?",
+    "options": ["Underfitting", "Overfitting", "Data leakage", "Scaling issues"],
+    "correct": 2
+  },
+  {
+    "question": "Which activation function outputs values between 0 and 1?",
+    "options": ["ReLU", "Sigmoid", "Tanh", "Softmax"],
+    "correct": 2
+  },
+  {
+    "question": "Which is used for regression tasks?",
+    "options": ["Logistic Regression", "Linear Regression", "K-Means", "KNN"],
+    "correct": 2
+  }
+]

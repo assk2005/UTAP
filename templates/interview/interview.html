@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Video Interview</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#f4f6f9;
+            padding:40px;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        #progress-text{
+            text-align:center;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .progress-bar{
+            width:100%;
+            height:10px;
+            background:#ddd;
+            border-radius:5px;
+            margin-bottom:25px;
+            overflow:hidden;
+        }
+
+        #progress-fill{
+            height:100%;
+            width:0%;
+            background:#4CAF50;
+            border-radius:5px;
+            transition: width 0.4s ease;
+        }
+
+        video{
+            display:block;
+            margin:auto;
+            border-radius:10px;
+            margin-bottom:20px;
+            max-width:100%;
+        }
+
+        button{
+            padding:10px 20px;
+            margin:10px 5px;
+            border-radius:8px;
+            border:none;
+            cursor:pointer;
+            font-size:14px;
+        }
+
+        .start{
+            background:#28a745;
+            color:white;
+        }
+
+        .stop{
+            background:#dc3545;
+            color:white;
+        }
+
+        #timer{
+            text-align:center;
+            font-weight:bold;
+            color:#dc3545;
+            margin-bottom:15px;
+        }
+
+        #status{
+            margin-top:20px;
+            text-align:center;
+            font-weight:bold;
+            color:#333;
+        }
+
+        #question{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h2>AI Video Interview</h2>
+
+    <!-- Question Counter -->
+    <p id="progress-text">Question {{ question_index|add:1 }} / 5</p>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div id="progress-fill"></div>
+    </div>
+
+    <!-- Question -->
+    <h3 id="question">{{ question_text }}</h3>
+
+    <!-- Timer -->
+    <p id="timer"></p>
+
+    <!-- Hidden fields -->
+    <input type="hidden" id="question_index" value="{{ question_index }}">
+    <input type="hidden" id="session_id" value="{{ session.id }}">
+
+    <!-- Camera Preview -->
+    <video id="preview" width="500" autoplay muted playsinline></video>
+
+    <div style="text-align:center">
+
+        <button class="start" onclick="startRecording()">Start Recording</button>
+
+        <button class="stop" onclick="stopRecording()">Stop</button>
+
+    </div>
+
+    <!-- AI Feedback -->
+    <p id="status"></p>
+
+</div>
+
+
+<script src="{% static 'js/interview.js' %}"></script>
+
+</body>
+</html>

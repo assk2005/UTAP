@@ -1,0 +1,122 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}About - UTAP{% endblock %}
+
+{% block extra_css %}
+<style>
+
+.section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.content-text{
+    color:#6c757d;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.info-card{
+    background:#ffffff;
+    border-radius:12px;
+    padding:35px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.06);
+}
+
+.info-card:hover{
+    transform:translateY(-4px);
+    transition:0.3s;
+}
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- About UTAP -->
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="info-card text-center">
+                <h2 class="section-title">About UTAP</h2>
+                <p class="content-text">
+                    The Unified Technical Assessment Platform (UTAP) is an academic initiative 
+                    designed to enhance and structure the recruitment evaluation process. 
+                    It integrates resume screening, candidate assessment, and intelligent 
+                    interview shortlisting into a unified workflow.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vision -->
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h4 class="section-title">Our Vision</h4>
+            <p class="content-text">
+                To establish a transparent and organized evaluation system that assists 
+                recruiters in identifying qualified candidates efficiently while ensuring 
+                fairness and clarity for applicants.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Problem Statement -->
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="info-card text-center">
+                <h4 class="section-title">Problem Statement</h4>
+                <p class="content-text">
+                    Traditional hiring workflows often involve manual resume review, 
+                    inconsistent evaluation standards, and lengthy shortlisting processes. 
+                    These challenges can reduce efficiency and create ambiguity in decision-making.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Our Approach -->
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h4 class="section-title">Our Approach</h4>
+            <p class="content-text">
+                UTAP connects resume evaluation, structured assessments, and final 
+                shortlisting into a cohesive system. By centralizing these processes, 
+                the platform ensures consistency, efficiency, and a streamlined 
+                recruitment experience.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Contact Section -->
+<div class="section">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="info-card text-center">
+                <h5 class="mb-3">Contact Information</h5>
+                <p class="mb-1"><strong>Email:</strong> utap.portal@gmail.com</p>
+                <p class="mb-1"><strong>Phone:</strong> +91 98765 43210</p>
+                <p class="mb-0"><strong>Location:</strong> Dehradun, Uttarakhand, India</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

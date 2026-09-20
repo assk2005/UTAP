@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the time complexity of dictionary lookup in Python (average case)?",
+    "options": ["O(n)", "O(log n)", "O(1)", "O(n log n)"],
+    "correct": 3
+  },
+  {
+    "question": "Which method is called when an object is created?",
+    "options": ["__del__", "__init__", "__new__", "__create__"],
+    "correct": 2
+  },
+  {
+    "question": "What does the GIL restrict?",
+    "options": [
+      "Multiprocessing",
+      "Multiple threads executing Python bytecode simultaneously",
+      "Async IO",
+      "Garbage collection"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which statement creates a generator?",
+    "options": ["[]", "{}", "Using yield keyword", "()"],
+    "correct": 3
+  },
+  {
+    "question": "What does bool('False') return?",
+    "options": ["False", "True", "Error", "None"],
+    "correct": 2
+  },
+  {
+    "question": "Which decorator defines a class method?",
+    "options": ["@staticmethod", "@classmethod", "@class", "@method"],
+    "correct": 2
+  },
+  {
+    "question": "Which data structure is unordered and unique?",
+    "options": ["List", "Tuple", "Set", "Dictionary"],
+    "correct": 3
+  },
+  {
+    "question": "What is the default return value of a function without return?",
+    "options": ["0", "False", "None", "Empty string"],
+    "correct": 3
+  },
+  {
+    "question": "Which module handles JSON parsing?",
+    "options": ["json", "pickle", "os", "sys"],
+    "correct": 1
+  },
+  {
+    "question": "Which sorting algorithm does Python use internally?",
+    "options": ["QuickSort", "MergeSort", "HeapSort", "Timsort"],
+    "correct": 4
+  }
+]

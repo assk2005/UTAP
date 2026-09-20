@@ -1,0 +1,428 @@
+{% extends 'accounts/base_dashboard.html' %}
+
+{% block title %}MCQ Test{% endblock %}
+
+{% block content %}
+
+<div id="fsOverlay" class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark" style="z-index:9999;">
+    <div class="text-center text-white">
+        <h3 class="mb-3">Enter Fullscreen to Begin</h3>
+        <button class="btn btn-warning" onclick="startFullscreen()">Start Test in Full Screen </button>
+    </div>
+</div>
+
+<style>
+
+#questionContainer {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.palette-btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.current {
+    background-color: #2563eb !important;
+}
+
+.answered {
+    background-color: #16a34a !important;
+}
+
+.unanswered {
+    background-color: #ef4444 !important;
+}
+</style>
+    
+<div class="container mt-4">
+
+    <div class="row">
+
+        <!-- LEFT SIDE (QUESTIONS) -->
+        <div class="col-md-8">
+
+            <div class="card shadow-sm p-4">
+
+                <h4 class="mb-4">Technical Assessment</h4>
+
+                <div class="d-flex justify-content-end mb-3">
+                    <div id="timer" class="badge bg-danger p-2 fs-6"></div>
+                </div>
+
+                <div id="questionContainer">
+
+                    {% for q in questions %}
+                    <div class="card mb-3" id="q{{ forloop.counter0 }}" style="display:none">
+
+                        <div class="card-body">
+
+                            <h5>Question {{ forloop.counter }}</h5>
+
+                            <pre class="bg-dark text-white p-3 rounded">
+{{ q.question }}
+                            </pre>
+
+                            <div class="mt-3">
+
+                                <label class="d-block">
+                                    <input type="radio" name="q{{ forloop.counter0 }}" value="1">
+                                    {{ q.options.0 }}
+                                </label>
+
+                                <label class="d-block">
+                                    <input type="radio" name="q{{ forloop.counter0 }}" value="2">
+                                    {{ q.options.1 }}
+                                </label>
+
+                                <label class="d-block">
+                                    <input type="radio" name="q{{ forloop.counter0 }}" value="3">
+                                    {{ q.options.2 }}
+                                </label>
+
+                                <label class="d-block">
+                                    <input type="radio" name="q{{ forloop.counter0 }}" value="4">
+                                    {{ q.options.3 }}
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="mt-3">
+                    <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <button class="btn btn-success" onclick="submitTest()">Submit Test</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE (PALETTE) -->
+        <div class="col-md-4">
+
+            <div class="card shadow-sm p-3 sticky-top" style="top:100px;">
+
+                <h5>Question Palette</h5>
+
+                <div id="palette" class="d-flex flex-wrap gap-2">
+
+                    {% for q in questions %}
+                    <button 
+                        class="btn btn-secondary palette-btn"
+                        id="p{{ forloop.counter0 }}"
+                        onclick="jumpToQuestion({{ forloop.counter0 }})">
+                        {{ forloop.counter }}
+                    </button>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+    let timeLeft = Number("{{ duration|default:600 }}");
+
+    let currentQuestion = 0;
+    let totalQuestions = parseInt("{{ questions|length }}");
+    let answers = {};
+
+    function showQuestion(index){
+
+        document.querySelectorAll("#questionContainer > div").forEach(q=>{
+            q.style.display="none";
+        });
+
+        document.getElementById("q"+index).style.display="block";
+
+        // remove current from all
+        document.querySelectorAll(".palette-btn").forEach(btn=>{
+            btn.classList.remove("current");
+        });
+
+        // add current safely
+        let currentBtn = document.getElementById("p"+index);
+        if(currentBtn){
+            currentBtn.classList.add("current");
+        }
+
+        // restore selected answer
+        if(answers[index]){
+            let option = document.querySelector(
+                `input[name="q${index}"][value="${answers[index]}"]`
+            );
+
+            if(option){
+                option.checked = true;
+            }
+        }
+    }
+
+
+    function startTimer(){
+
+        const timerDisplay=document.getElementById("timer");
+
+        const interval=setInterval(()=>{
+
+            let minutes=Math.floor(timeLeft/60);
+            let seconds=timeLeft%60;
+
+            timerDisplay.innerText=
+            `Time Left: ${minutes}:${seconds<10?'0':''}${seconds}`;
+
+            timeLeft--;
+
+            if(timeLeft<0){
+
+                clearInterval(interval);
+
+                alert("Time is up! Submitting test.");
+
+                submitTest();
+
+            }
+
+        },1000);
+
+    }
+
+
+    function saveAnswer(){
+
+        let selected=document.querySelector(
+            `input[name="q${currentQuestion}"]:checked`
+        );
+
+        if(selected){
+
+            answers[currentQuestion]=selected.value;
+
+            let palette = document.getElementById("p"+currentQuestion);
+            if(palette){
+                palette.classList.add("unanswered");
+            }
+
+            palette.classList.remove("unanswered");
+            palette.classList.add("answered");
+
+
+        }else{
+
+            let palette=document.getElementById("p"+currentQuestion);
+
+            palette.classList.remove("answered");
+            palette.classList.add("unanswered");
+
+
+        }
+
+    }
+
+
+
+   function nextQuestion(){
+
+        let selected = document.querySelector(
+            `input[name="q${currentQuestion}"]:checked`
+        );
+
+        let palette = document.getElementById("p"+currentQuestion);
+
+        if(!selected && !answers[currentQuestion]){
+            if (palette) {
+                palette.classList.add("unanswered");
+            }
+        }
+
+        if(currentQuestion < totalQuestions - 1){
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        } else {
+            alert("You reached last question");
+        }
+    }
+
+    function jumpToQuestion(index){
+
+        currentQuestion=index;
+
+        showQuestion(currentQuestion);
+
+    }
+
+
+    function submitTest(){
+
+        fetch('/assessment/api/submit/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ answers })
+                })
+        .then(response => response.json())
+        .then(data => {
+
+            console.log("API RESPONSE:", data);  // 🔥 IMPORTANT
+
+            if (data.redirect_url) {
+                window.location.href = data.redirect_url;
+            } else {
+                alert("Redirect URL missing");
+                console.log("FULL RESPONSE:", data);
+            }
+
+        })
+        .catch(error => {
+            console.error("ERROR:", error);
+            alert("Something went wrong");
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+
+    currentQuestion = 0;
+    showQuestion(currentQuestion);
+    startTimer();
+
+    document.querySelectorAll("input[type=radio]").forEach(option => {
+
+        option.addEventListener("change", function(){
+
+            let questionIndex = this.name.replace("q","");
+
+            answers[questionIndex] = this.value;
+
+            let palette = document.getElementById("p"+questionIndex);
+
+            palette.classList.remove("unanswered");
+            palette.classList.add("answered");
+
+        });
+
+    });
+
+});
+
+
+let exitCount=0;
+    // If browser fires fullscreenchange, also unlock UI there (more reliable)
+document.addEventListener("fullscreenchange", function () {
+
+    if (!document.fullscreenElement) {
+
+        exitCount++;
+
+        if (exitCount === 1) {
+
+            alert("Warning: Do not exit fullscreen.");
+
+            // SHOW OVERLAY AGAIN
+            let overlay = document.getElementById("fsOverlay");
+            if (overlay) overlay.style.display = "flex";
+
+        } else {
+
+            alert("Test terminated.");
+            submitTest();
+
+        }
+    }
+});
+
+    // Optional: tab switch handling
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        exitCount++;
+        if (exitCount === 1) {
+            alert("Warning: Do not switch tabs.");
+        } else {
+            submitTest();
+        }
+    }
+});
+
+
+
+function startFullscreen() {
+
+    let overlay = document.getElementById("fsOverlay");
+    let qc = document.getElementById("questionContainer");
+
+    try {
+        document.documentElement.requestFullscreen();
+
+        // REMOVE OVERLAY COMPLETELY
+        if (overlay) overlay.remove();
+
+        // ENABLE TEST
+        if (qc) {
+            qc.style.pointerEvents = "auto";
+            qc.style.opacity = "1";
+        }
+
+        console.log("Test started");
+
+    } catch (e) {
+        alert("Fullscreen failed");
+        console.log(e);
+    }
+}
+
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function(e) {
+
+    // Block Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+U, Ctrl+S
+    if (e.ctrlKey && ['c','v','x','u','s'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+    }
+
+    // Block F12 (DevTools)
+    if (e.key === "F12") {
+        e.preventDefault();
+    }
+
+    // Block Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+        e.preventDefault();
+    }
+});
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+
+        alert("You exited fullscreen!");
+
+        exitCount++;
+
+        if (exitCount === 1) {
+            alert("Warning: Do not press ESC.");
+        } else {
+            submitTest();   // or submitOutputTest()
+        }
+    }
+
+});
+
+</script>
+{% endblock %}

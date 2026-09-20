@@ -1,0 +1,21 @@
+# Django core
+django>=4.2,<5.0
+djangorestframework
+djangorestframework-simplejwt
+
+# Resume Engine
+pymupdf          # PDF text extraction (fitz)
+python-docx      # DOCX text extraction
+langdetect       # Language detection
+sentence-transformers  # Semantic skill scoring
+scikit-learn
+numpy
+
+# Assessment — no extra deps (uses json files)
+
+# Interview
+openai-whisper   # Speech-to-text
+deepface         # Emotion detection from video
+tf-keras         # required by deepface on tensorflow 2.21+
+moviepy          # Audio extraction from video
+opencv-python    # Frame-level processing

@@ -1,0 +1,61 @@
+{% extends 'accounts/base_dashboard.html' %}
+
+{% block title %}Assessment Instructions{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 d-flex justify-content-center">
+
+    <div class="card shadow-sm p-5" style="max-width:700px; width:100%;">
+
+        <h3 class="mb-4 text-center">Assessment Instructions</h3>
+
+        <ul class="mb-4">
+
+            <li>This test consists of multiple-choice questions.</li>
+
+            <li>You will have a 10 minutes to complete the assessment.</li>
+
+            <li>Do not refresh or leave the page during the test.</li>
+
+            <li>Each question has only one correct answer.</li>
+
+            <li>Your responses will be automatically recorded.</li>
+
+            <li>Once submitted, you cannot retake the test.</li>
+
+        </ul>
+
+        <div class="text-center">
+
+            <a href="{% url 'generate_assessment' %}" class="btn btn-success">
+                Start Test
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+document.getElementById("startBtn").addEventListener("click", async function () {
+
+    let elem = document.documentElement;
+
+    try {
+        if (elem.requestFullscreen) {
+            await elem.requestFullscreen();
+        }
+
+        setTimeout(() => {
+            window.location.href = "{% url 'generate_assessment' %}";
+        }, 500);
+
+    } catch (err) {
+        alert("Fullscreen failed. Please allow fullscreen and try again.");
+    }
+
+});
+</script>
+
+{% endblock %}

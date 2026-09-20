@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Which scheduling algorithm may cause starvation?",
+    "options": ["FCFS", "Round Robin", "Priority Scheduling", "SJF"],
+    "correct": 3
+  },
+  {
+    "question": "What is a deadlock?",
+    "options": [
+      "Infinite loop",
+      "Two or more processes waiting indefinitely",
+      "Memory overflow",
+      "CPU overload"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Which memory allocation avoids external fragmentation?",
+    "options": ["Paging", "Segmentation", "Contiguous allocation", "Swapping"],
+    "correct": 1
+  },
+  {
+    "question": "Which system call creates a new process in Unix?",
+    "options": ["exec()", "fork()", "create()", "spawn()"],
+    "correct": 2
+  },
+  {
+    "question": "What is thrashing?",
+    "options": [
+      "Excessive paging",
+      "CPU overheating",
+      "Disk failure",
+      "Network congestion"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which scheduling is preemptive?",
+    "options": ["FCFS", "Round Robin", "SJF non-preemptive", "Batch"],
+    "correct": 2
+  },
+  {
+    "question": "Which algorithm prevents deadlock?",
+    "options": ["Banker’s Algorithm", "FIFO", "SJF", "Round Robin"],
+    "correct": 1
+  },
+  {
+    "question": "Which memory is fastest?",
+    "options": ["RAM", "Cache", "Hard Disk", "Virtual Memory"],
+    "correct": 2
+  },
+  {
+    "question": "Which condition is NOT required for deadlock?",
+    "options": ["Mutual exclusion", "Hold and wait", "Preemption", "Circular wait"],
+    "correct": 3
+  },
+  {
+    "question": "Which file system is used in Linux?",
+    "options": ["NTFS", "FAT32", "ext4", "HFS+"],
+    "correct": 3
+  }
+]

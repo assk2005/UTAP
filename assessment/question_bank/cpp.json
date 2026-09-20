@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Which concept allows same function name with different parameters?",
+    "options": ["Encapsulation", "Overloading", "Inheritance", "Polymorphism"],
+    "correct": 2
+  },
+  {
+    "question": "Which operator is used for dynamic memory allocation?",
+    "options": ["alloc", "malloc", "new", "create"],
+    "correct": 3
+  },
+  {
+    "question": "Which keyword prevents inheritance?",
+    "options": ["final", "const", "static", "sealed"],
+    "correct": 1
+  },
+  {
+    "question": "Which data structure follows LIFO?",
+    "options": ["Queue", "Stack", "Heap", "Tree"],
+    "correct": 2
+  },
+  {
+    "question": "Which STL container stores unique keys?",
+    "options": ["vector", "list", "set", "array"],
+    "correct": 3
+  },
+  {
+    "question": "What is virtual function used for?",
+    "options": ["Compile-time polymorphism", "Runtime polymorphism", "Memory allocation", "Threading"],
+    "correct": 2
+  },
+  {
+    "question": "Which header is used for input/output?",
+    "options": ["<stdio.h>", "<iostream>", "<fstream>", "<stream>"],
+    "correct": 2
+  },
+  {
+    "question": "Which feature prevents memory leaks?",
+    "options": ["Garbage Collection", "RAII", "Destructor only", "Pointer"],
+    "correct": 2
+  },
+  {
+    "question": "Which operator is overloaded for streams?",
+    "options": ["+", "<<", ">>", "*"],
+    "correct": 2
+  },
+  {
+    "question": "Which container provides fast random access?",
+    "options": ["list", "map", "vector", "set"],
+    "correct": 3
+  }
+]

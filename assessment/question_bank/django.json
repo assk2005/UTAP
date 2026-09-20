@@ -1,0 +1,67 @@
+[
+  {
+    "question": "Which file defines Django URL routing?",
+    "options": ["views.py", "models.py", "urls.py", "admin.py"],
+    "correct": 3
+  },
+  {
+    "question": "Which ORM method retrieves all records?",
+    "options": ["get()", "filter()", "all()", "fetch()"],
+    "correct": 3
+  },
+  {
+    "question": "Which command creates migrations?",
+    "options": [
+      "python manage.py migrate",
+      "python manage.py makemigrations",
+      "django migrate",
+      "create migration"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "What does Django middleware do?",
+    "options": [
+      "Handles HTTP requests and responses globally",
+      "Defines models",
+      "Stores sessions",
+      "Creates templates"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Which template syntax outputs a variable?",
+    "options": ["{% %}", "{{ }}", "[[ ]]", "<% %>"],
+    "correct": 2
+  },
+  {
+    "question": "Which setting controls allowed hosts?",
+    "options": ["ALLOWED_HOSTS", "HOSTS", "SERVER_LIST", "VALID_HOSTS"],
+    "correct": 1
+  },
+  {
+    "question": "Which decorator restricts view access to logged-in users?",
+    "options": ["@login_required", "@auth", "@secure", "@protected"],
+    "correct": 1
+  },
+  {
+    "question": "Which database is default in Django?",
+    "options": ["PostgreSQL", "SQLite", "MySQL", "Oracle"],
+    "correct": 2
+  },
+  {
+    "question": "Which method saves a model instance?",
+    "options": ["insert()", "save()", "commit()", "push()"],
+    "correct": 2
+  },
+  {
+    "question": "Which command starts development server?",
+    "options": [
+      "python startserver",
+      "django run",
+      "python manage.py runserver",
+      "start django"
+    ],
+    "correct": 3
+  }
+]

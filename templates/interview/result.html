@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interview Result</title>
+<style>
+body { font-family: Arial; background: #f4f6f9; padding: 40px; }
+.container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.score { font-size: 30px; color: #28a745; font-weight: bold; }
+.section { margin-top: 25px; }
+.answer { background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+.btn-primary { background: #1a1a2e; color: white; }
+.btn-primary:hover { background: #333; color: white; }
+.badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; }
+.badge-success { background: #d4edda; color: #155724; }
+.badge-danger { background: #f8d7da; color: #721c24; }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <h2>Interview Completed</h2>
+    <p class="score">Final Score: {{ score }}/10</p>
+
+    {% if score >= 5 %}
+        <span class="badge badge-success">✅ Interview Passed</span>
+    {% else %}
+        <span class="badge badge-danger">❌ Below Average</span>
+    {% endif %}
+
+    <div class="section">
+        <h3>Speech Analytics</h3>
+        <p>Total Filler Words: {{ fillers }}</p>
+        <p>Average Speech Speed: {{ speech_speed }} WPM</p>
+    </div>
+
+    <div class="section">
+        <h3>Emotion Summary</h3>
+        <p>{{ emotions }}</p>
+    </div>
+
+    <div class="section">
+        <h3>Answer Breakdown</h3>
+        {% for r in responses %}
+        <div class="answer">
+            <p><b>Question:</b> {{ r.question }}</p>
+            <p><b>Transcript:</b> {{ r.transcript|default:"(No speech detected)" }}</p>
+            <p><b>Score:</b> {{ r.score }}/10</p>
+            <p><b>Emotion:</b> {{ r.emotion }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/candidate/dashboard/" class="btn btn-primary">← Back to My Dashboard</a>
+
+</div>
+</body>
+</html>

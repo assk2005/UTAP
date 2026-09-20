@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview Home</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to AI Video Interview</h1>
+    <p>Click below to start your interview</p>
+
+    <a href="{% url 'start_interview' %}">
+        <button class="btn">Start Interview</button>
+    </a>
+
+</body>
+</html>

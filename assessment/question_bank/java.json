@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Which keyword enables inheritance in Java?",
+    "options": ["implements", "extends", "inherits", "super"],
+    "correct": 2
+  },
+  {
+    "question": "Which collection does not allow duplicates?",
+    "options": ["List", "ArrayList", "Set", "Vector"],
+    "correct": 3
+  },
+  {
+    "question": "What is JVM responsible for?",
+    "options": ["Compiling Java code", "Executing bytecode", "Writing source code", "Managing database"],
+    "correct": 2
+  },
+  {
+    "question": "Which method is entry point of Java program?",
+    "options": ["start()", "main()", "init()", "run()"],
+    "correct": 2
+  },
+  {
+    "question": "Which access modifier gives widest access?",
+    "options": ["private", "protected", "default", "public"],
+    "correct": 4
+  },
+  {
+    "question": "Which concept allows multiple methods with same name?",
+    "options": ["Encapsulation", "Polymorphism", "Abstraction", "Inheritance"],
+    "correct": 2
+  },
+  {
+    "question": "Which keyword prevents inheritance?",
+    "options": ["static", "const", "final", "sealed"],
+    "correct": 3
+  },
+  {
+    "question": "Which exception is unchecked?",
+    "options": ["IOException", "SQLException", "NullPointerException", "FileNotFoundException"],
+    "correct": 3
+  },
+  {
+    "question": "Which interface is used for thread creation?",
+    "options": ["Runnable", "Serializable", "Comparable", "Cloneable"],
+    "correct": 1
+  },
+  {
+    "question": "Which collection is synchronized?",
+    "options": ["ArrayList", "HashSet", "Vector", "LinkedList"],
+    "correct": 3
+  }
+]

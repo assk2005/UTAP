@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the time complexity of binary search?",
+    "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    "correct": 2
+  },
+  {
+    "question": "Which data structure uses FIFO principle?",
+    "options": ["Stack", "Queue", "Tree", "Graph"],
+    "correct": 2
+  },
+  {
+    "question": "What is the worst-case complexity of quicksort?",
+    "options": ["O(n log n)", "O(n)", "O(n²)", "O(log n)"],
+    "correct": 3
+  },
+  {
+    "question": "Which traversal uses recursion naturally?",
+    "options": ["Breadth-first", "Depth-first", "Level order", "Heap traversal"],
+    "correct": 2
+  },
+  {
+    "question": "Which structure uses LIFO?",
+    "options": ["Queue", "Stack", "Array", "Linked List"],
+    "correct": 2
+  },
+  {
+    "question": "What is the height of a balanced binary tree with n nodes?",
+    "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    "correct": 2
+  },
+  {
+    "question": "Which data structure is best for priority scheduling?",
+    "options": ["Stack", "Queue", "Heap", "Linked List"],
+    "correct": 3
+  },
+  {
+    "question": "Which collision resolution uses linked lists?",
+    "options": ["Open addressing", "Chaining", "Linear probing", "Quadratic probing"],
+    "correct": 2
+  },
+  {
+    "question": "What is the time complexity of inserting into a hash table (average)?",
+    "options": ["O(n)", "O(log n)", "O(1)", "O(n²)"],
+    "correct": 3
+  },
+  {
+    "question": "Which algorithm detects cycle in graph?",
+    "options": ["DFS", "BFS", "Binary search", "Greedy"],
+    "correct": 1
+  }
+]

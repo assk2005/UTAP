@@ -1,0 +1,96 @@
+{% extends 'accounts/base_dashboard.html' %}
+
+{% block title %}Candidate Management{% endblock %}
+
+{% block page_header %}
+<div class="page-header">
+    <h2 class="page-title">Candidate Management</h2>
+    <p class="page-subtitle">View and manage candidate accounts</p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-sm">
+<div class="card-body p-0">
+
+<table class="table table-hover mb-0 align-middle">
+<thead class="table-light">
+<tr>
+<th>Email</th>
+<th>Applications</th>
+<th>Joined On</th>
+<th>Last Login</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+{% for candidate in candidates %}
+<tr>
+
+<td class="fw-semibold">
+{{ candidate.email }}
+</td>
+
+<td>
+{{ candidate.applications.count }}
+</td>
+
+<td>
+{{ candidate.created_at|date:"d M Y" }}
+</td>
+
+<td>
+{% if candidate.last_login %}
+{{ candidate.last_login|date:"d M Y H:i" }}
+{% else %}
+<span class="text-muted">Never</span>
+{% endif %}
+</td>
+
+<td>
+{% if candidate.is_active %}
+<span class="badge bg-success">Active</span>
+{% else %}
+<span class="badge bg-secondary">Suspended</span>
+{% endif %}
+</td>
+
+<td class="d-flex gap-2 flex-wrap">
+
+<a href="{% url 'toggle_candidate_status' candidate.id %}"
+   class="btn btn-sm {% if candidate.is_active %}btn-outline-danger{% else %}btn-outline-success{% endif %}">
+{% if candidate.is_active %}
+Suspend
+{% else %}
+Reactivate
+{% endif %}
+</a>
+
+<a href="{% url 'delete_candidate' candidate.id %}"
+   class="btn btn-sm btn-danger"
+   onclick="return confirm('Delete this candidate?')">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+<tr>
+<td colspan="6" class="text-center text-muted py-4">
+No candidates found.
+</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+{% endblock %}
